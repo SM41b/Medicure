@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Care</title>
+  <link rel="stylesheet" href="./emergency.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+  <header>
+    <div id="back-home">
+      <a href='../index.html' class="medicure-button">🏠 ← MEDICURE</a>
+    </div>
+    
+    <h1>🚨 Emergency Care Center 🚑</h1>
+    <!-- Navbar -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#contacts">Emergency Contacts</a>
+  <a href="#firstaid">First Aid</a>
+  <a href="#hospital-access">Nearby Hospitals</a>
+  <a href="#education">Educational Resources (Health related)</a>
+</nav>
+
+  </header>
+  
+  <main>
+    <!-- Emergency Contacts Section -->
+    <section id="contacts">
+      <h2> ☎️ Emergency Contact Information</h2>
+      <table>
+        <tr><td><strong>Ambulance (Govt)</strong></td><td><a href="tel:102">Call 102</a></td></tr>
+        <tr><td><strong>Medical Helpline (108)</strong></td><td><a href="tel:108">Call 108</a></td></tr>
+        <tr><td><strong>Police</strong></td><td><a href="tel:100">Call 100</a></td></tr>
+        <tr><td><strong>Fire</strong></td><td><a href="tel:101">Call 101</a></td></tr>
+        <tr><td><strong>Women’s Helpline</strong></td><td><a href="tel:1091">Call 1091</a></td></tr>
+        <tr><td><strong>Child Helpline</strong></td><td><a href="tel:1098">Call 1098</a></td></tr>
+        <tr><td><strong>Senior Citizen Helpline</strong></td><td><a href="tel:14567">Call 14567</a></td></tr>
+        <tr><td><strong>Disaster Helpline</strong></td><td><a href="tel:1078">Call 1078</a></td></tr>
+      </table>
+    </section>
+
+    
+    <!-- First Aid section -->
+<section id="firstaid">
+  <h2> 🧰 First Aid Instructions</h2>
+  <ul>
+      <!-- Burns Card -->
+      <li>
+          <div class="card" onclick="toggleContent('burns')">
+              <span class="card-title">Burns 🔥</span>
+          </div>
+          <div class="card-content" id="burns">
+              <ol>
+                  <li><strong>Minor Burns (First-Degree):</strong> Run cool (not cold) water over the burn for 10–15 minutes or apply a cold, wet compress. Avoid ice, as it can cause further damage. Gently pat the burn dry with a clean cloth.</li>
+                  <li><strong>Moderate Burns (Second-Degree):</strong> Cool the burn under running water or with a damp cloth. Do not pop blisters. Cover with a sterile, non-stick dressing. Seek medical help if blisters appear or the burn covers a large area.</li>
+                  <li><strong>Severe Burns (Third-Degree):</strong> Call emergency services immediately. Cover the area with a clean, non-stick cloth. Do not remove clothing stuck to the skin or immerse in water. Monitor for shock (pale skin, shallow breathing, confusion).</li>
+              </ol>
+          </div>
+      </li>
+      
+      <!-- Fractures Card -->
+      <li>
+          <div class="card" onclick="toggleContent('fractures')">
+              <span class="card-title">Fractures 🦴</span>
+          </div>
+          <div class="card-content" id="fractures">
+              <ol>
+                  <li><strong>Suspected Fracture:</strong> Immobilize the injured area. Use a splint (e.g., board or rolled newspaper) and secure with bandages or cloth—ensure it's not too tight.</li>
+                  <li><strong>Open Fracture:</strong> Cover the wound with a sterile bandage or clean cloth. Do not attempt to push the bone back in. Keep the victim calm and seek immediate medical help.</li>
+                  <li><strong>Dislocation:</strong> Do not attempt to realign the joint. Immobilize and get medical help as soon as possible.</li>
+              </ol>
+          </div>
+      </li>
+      
+      <!-- Cardiac Arrest Card -->
+      <li>
+          <div class="card" onclick="toggleContent('cardiac-arrest')">
+              <span class="card-title">Cardiac Arrest ❤️‍🔥</span>
+          </div>
+          <div class="card-content" id="cardiac-arrest">
+              <ol>
+                  <li><strong>Call Emergency Services:</strong> Dial emergency services or ask someone else to do so immediately.</li>
+                  <li><strong>CPR (Cardiopulmonary Resuscitation):</strong> If unresponsive and not breathing, begin chest compressions. Place your hands in the center of the chest and push hard and fast (2 inches deep at 100–120 compressions per minute). Alternate with rescue breaths if trained.</li>
+              </ol>
+          </div>
+      </li>
+
+      <!-- Choking Card -->
+      <li>
+          <div class="card" onclick="toggleContent('choking')">
+              <span class="card-title">Choking 😷</span>
+          </div>
+          <div class="card-content" id="choking">
+              <ol>
+                  <li><strong>Mild Choking (Able to Cough or Speak):</strong> Encourage coughing to dislodge the object.</li>
+                  <li><strong>Severe Choking (Unable to Breathe or Talk):</strong> Perform the Heimlich maneuver. Stand behind the person, place your fist above the navel, and thrust inward and upward. If unconscious, begin CPR and check the mouth between compressions.</li>
+              </ol>
+          </div>
+      </li>
+
+      <!-- Severe Bleeding Card -->
+      <li>
+          <div class="card" onclick="toggleContent('severe-bleeding')">
+              <span class="card-title">Severe Bleeding 🩸 </span>
+          </div>
+          <div class="card-content" id="severe-bleeding">
+              <ol>
+                  <li><strong>Direct Pressure:</strong> Apply firm pressure on the wound with a clean cloth. Do not remove soaked cloth—add more layers.</li>
+                  <li><strong>Elevate:</strong> If possible, raise the injured limb above heart level.</li>
+                  <li><strong>Pressure Points:</strong> Press major arteries (e.g., brachial for arms, femoral for legs) if bleeding continues.</li>
+                  <li><strong>Tourniquet:</strong> As a last resort, apply a tourniquet above the wound. Record the time. Seek emergency help immediately.</li>
+              </ol>
+          </div>
+      </li>
+
+      <!-- Heatstroke Card -->
+      <li>
+          <div class="card" onclick="toggleContent('heatstroke')">
+              <span class="card-title">Heatstroke 🥵</span>
+          </div>
+          <div class="card-content" id="heatstroke">
+              <ol>
+                  <li><strong>Move to a Cool Place:</strong> Get the person into shade or an air-conditioned environment.</li>
+                  <li><strong>Cool the Body:</strong> Use cool, wet cloths, fans, or immersion in cool water—especially around neck, armpits, and groin.</li>
+                  <li><strong>Hydration:</strong> Offer cool water or electrolyte drinks. Avoid alcohol or caffeine.</li>
+                  <li><strong>Monitor Symptoms:</strong> Watch for confusion, seizures, or unconsciousness. Call emergency services immediately if symptoms worsen.</li>
+              </ol>
+          </div>
+      </li>
+
+      <!-- Hypothermia Card -->
+      <li>
+          <div class="card" onclick="toggleContent('hypothermia')">
+              <span class="card-title">Hypothermia ❄️</span>
+          </div>
+          <div class="card-content" id="hypothermia">
+              <ol>
+                  <li><strong>Get to Warmth:</strong> Move the person to a warm, dry area.</li>
+                  <li><strong>Remove Wet Clothing:</strong> Replace with dry, warm clothing. Be gentle while handling.</li>
+                  <li><strong>Warm the Body:</strong> Offer warm liquids (no alcohol/caffeine). Use warm compresses on chest, neck, and head first.</li>
+                  <li><strong>Seek Medical Help:</strong> If the person is unresponsive or severely affected, get emergency medical assistance immediately.</li>
+              </ol>
+          </div>
+      </li>
+      <!-- Asthma Attack Card -->
+      <li>
+        <div class="card" onclick="toggleContent('asthma')">
+            <span class="card-title">Asthma Attack 🫁</span>
+        </div>
+        <div class="card-content" id="asthma">
+            <ol>
+                <li><strong>Stay Calm:</strong> Encourage the person to remain calm to avoid worsening the situation.</li>
+                <li><strong>Use Inhaler:</strong> If the person has a prescribed inhaler, encourage them to use it immediately.</li>
+                <li><strong>Sit Up Straight:</strong> Help the person to sit up straight to open the airways.</li>
+                <li><strong>Monitor Breathing:</strong> If symptoms don't improve, help the person use the inhaler again after 10 minutes.</li>
+                <li><strong>Seek Emergency Help:</strong> If symptoms worsen, call emergency services immediately.</li>
+            </ol>
+        </div>
+      </li>
+
+      <!-- Seizures Card -->
+      <li>
+        <div class="card" onclick="toggleContent('seizures')">
+            <span class="card-title">Seizures ⚡</span>
+        </div>
+        <div class="card-content" id="seizures">
+            <ol>
+                <li><strong>Protect the Person from Injury:</strong> Clear the area of sharp objects and place a cushion or cloth under the person's head.</li>
+                <li><strong>Do Not Restrain:</strong> Never try to hold the person down during a seizure.</li>
+                <li><strong>Turn the Person on Their Side:</strong> After the seizure stops, roll the person onto their side to allow fluids to drain.</li>
+                <li><strong>Time the Seizure:</strong> If it lasts more than 5 minutes, call emergency services immediately.</li>
+                <li><strong>Post-Seizure Care:</strong> Reassure and keep the person calm once the seizure ends.</li>
+            </ol>
+        </div>
+      </li>
+
+      <!-- Poisoning Card -->
+      <li>
+        <div class="card" onclick="toggleContent('poisoning')">
+            <span class="card-title">Poisoning ☠️</span>
+        </div>
+        <div class="card-content" id="poisoning">
+            <ol>
+                <li><strong>Assess the Situation:</strong> Determine what was ingested, how much, and when it occurred.</li>
+                <li><strong>Call Emergency Services:</strong> Immediately contact emergency services or poison control.</li>
+                <li><strong>Do Not Induce Vomiting:</strong> Never induce vomiting unless instructed by a medical professional.</li>
+                <li><strong>Keep the Person Calm:</strong> Keep the person calm and monitor their breathing.</li>
+                <li><strong>Provide Information:</strong> Give responders as much information as possible about the substance involved.</li>
+            </ol>
+        </div>
+      </li>
+
+  </ul>
+</section>
+
+    <!-- Nearby Hospital Button -->
+    <section id="hospital-access">
+      <h2>🚑 Need Immediate Medical Help?</h2>
+      <p>Your safety is our top priority. If you're experiencing a medical emergency...</p>
+    
+      <ul>
+        <li>Real-time map of nearby hospitals</li>
+        <li>Distance and estimated time</li>
+        <li>Directions with navigation</li>
+      </ul>
+    
+      <div style="text-align: center; margin-top: 2rem;">
+        <button onclick="window.open('nearby_hospitals.html', '_blank')">
+          🔍 Find Nearby Hospitals
+        </button>
+        <p class="note">Opens in a new tab</p>
+      </div>
+    
+      <div class="tip">
+        <strong>Tip:</strong> Enable location access for best results.
+      </div>
+    </section>
+  
+<!-- Educational Resources section -->
+<section id="education">
+  <h2 >📘 Health Educational  Resources </h2>
+  <p class="intro-text">
+    Explore verified videos, articles, and downloadable guides on emergency care, first aid, and disaster preparedness.
+    Filter by category or language, or contribute your own useful resource.
+  </p>
+
+  <!-- Filter Buttons -->
+  <div class="filter-buttons">
+    <button onclick="filterResources('all')" class="active">All</button>
+    <button onclick="filterResources('burns')">Burns</button>
+    <button onclick="filterResources('cpr')">CPR</button>
+    <button onclick="filterResources('natural')">Natural Disasters</button>
+    <button onclick="filterResources('pdf')">Downloadable Guides</button>
+    
+  </div>
+
+  <!-- Resource List -->
+  <ul id="resource-list">
+    <li data-topic="burns">
+      <a href="https://www.youtube.com/watch?v=1I3x8pR3gHE" target="_blank">
+        🩹 First Aid for Burns, Cuts, and Bruises – YouTube
+      </a>
+      <p class="description">Visual guide on how to manage common injuries at home, including proper wound cleaning and dressing.</p>
+    </li>
+    <li data-topic="cpr">
+      <a href="https://www.youtube.com/watch?v=0xWgdT3H8t4" target="_blank">
+        ❤️ CPR Training by St. John Ambulance
+      </a>
+      <p class="description">Step-by-step video on how to perform CPR on adults, children, and infants in emergencies.</p>
+    </li>
+    <li data-topic="natural">
+      <a href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies.html" target="_blank">
+        🌪️ Red Cross: Emergency Preparedness Guide
+      </a>
+      <p class="description">Comprehensive guide to prepare for floods, earthquakes, hurricanes, and other disasters.</p>
+    </li>
+    <li data-topic="pdf">
+      <a href="https://www.ndma.gov.in/sites/default/files/PDF/FirstAidManual.pdf" target="_blank" download>
+        📄 NDMA First Aid Manual (PDF)
+      </a>
+      <p class="description">Official manual by the National Disaster Management Authority. Useful for personal and professional training.</p>
+    </li>
+    <li data-topic="hindi pdf">
+      <a href="https://www.nhm.gov.in/images/pdf/emergency-medical-service/First-Aid-Hindi.pdf" target="_blank">
+        🗣️ Hindi: First Aid Guide (PDF)
+      </a>
+      <p class="description">Essential first aid instructions in Hindi by the Ministry of Health and Family Welfare, India.</p>
+    </li>
+    <li data-topic="bengali pdf">
+      <a href="https://www.nhm.gov.in/images/pdf/emergency-medical-service/First-Aid-Bengali.pdf" target="_blank">
+        🗣️ Bengali: First Aid Guide (PDF)
+      </a>
+      <p class="description">First aid training material in Bengali with clear steps for burns, CPR, and accident handling.</p>
+    </li>
+  </ul>
+
+  <!-- Submit Form -->
+  <h3 id="user-submit">📤 Submit Your Own Resource</h3>
+  <p class="intro-text">Have a useful video, article, or PDF on health and emergencies? Share it with others below!</p>
+  <form id="resourceForm" onsubmit="addUserResource(event)">
+    <input type="text" id="userTitle" placeholder="Title of the resource" required />
+    <input type="url" id="userLink" placeholder="Paste full link (https://...)" required />
+    <input type="text" id="userTopic" placeholder="Topic (e.g. burns, CPR, hindi)" required />
+    <button type="submit">Submit Resource</button>
+  </form>
+</section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025, <strong>MEDICURE</strong>   Emergency Care Center</p>
+  </footer>
+
+  <script src="./emergency.js"></script>
+</body>
+</html>

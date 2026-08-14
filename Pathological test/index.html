@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PathoCare Diagnostics</title>
+    <style>
+        #homeSampleForm { display: none; margin-top: 10px; }
+        label { display: block; margin: 5px 0; }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="homeSample.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div id="back-home">
+      <a href='../index.html' class="medicure-button">🏠 ← MEDICURE</a>
+        </div>
+
+        <h1>PathoCare Diagnostics 🧪</h1>
+        <nav>
+            <a href="#tests">Tests</a>
+            <a href="#appointment">Appointment</a>
+            <!-- <a href="#image-analysis">Image Analysis</a> -->
+            
+            <!-- <a href="#report-download">Reports</a> -->
+            <a href="#home-sample">Home Sample</a>
+            <a href="#tracker">Report Tracker</a>
+            <a href="#faq">FAQs</a>
+            <a href="#insurance">Insurance</a>
+        </nav>
+    </header>
+
+    <!-- Welcome Section with Gradient Wave Background -->
+    <section class="welcome-section">
+        <h1>Welcome to PathoCare — Powered by <strong>MEDICURE</strong></h1>
+        <p>Revolutionizing digital diagnostics with AI-enhanced pathology and integrated care.</p>
+        <p>PathoCare is MEDICURE’s dedicated pathology service offering 100+ tests with home services.</p>
+    </section>
+
+
+
+    <!-- Popular Diagnostic Tests Section -->
+    <section id="tests">
+        <h2>Popular Diagnostic Tests</h2>
+        <!-- <div class="tests-grid"> -->
+            
+        <!-- Slider Container -->
+        <div class="slider-container">
+            <button class="nav-btn prev-btn">&#10094;</button>
+
+    <div class="tests-slider">
+
+        <!-- CBC Test Card -->
+       <div class="test-card">
+        <img src="test-images/imagescbc.PNG" alt="CBC Test">
+        <h3>CBC (Complete Blood Count)</h3>
+         <p><strong>💰 Price: ₹450</strong></p>
+        <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Blood</p>
+        <p><i class="fas fa-utensils-slash"></i> <strong>Fasting:</strong> Not Required</p>
+        <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 4 hours</p>
+        <p>This test evaluates overall health by measuring red cells, white cells, hemoglobin, and platelets.
+          Helps detect anemia, infections, and blood disorders.</p>
+        <button class="btn-book">Book Now</button>
+      </div>
+
+      <!-- MRI Test Card -->
+      <div class="test-card">
+        <img src="test-images/imagesmri.PNG" alt="MRI Test">
+        <h3>MRI (Magnetic Resonance Imaging)</h3>
+         <p><strong>💰 Price: ₹2500</strong></p>
+        <p><i class="fas fa-image"></i> <strong>Sample:</strong> Imaging (Non-invasive)</p>
+        <p><i class="fas fa-utensils"></i> <strong>Fasting:</strong> May be Required</p>
+        <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 24 hours</p>
+        <p>MRI uses magnetic fields and radio waves to create detailed images of organs and tissues. Used for
+          brain, spine, joints, and soft tissue evaluation.</p>
+        <button class="btn-book">Book Now</button>
+      </div>
+
+      <!-- Blood Sugar Test Card -->
+      <div class="test-card">
+        <img src="test-images/imagesblood-sugar.PNG" alt="Blood Sugar Test">
+        <h3>Blood Sugar (Glucose)</h3>
+         <p><strong>💰 Price: ₹500</strong></p>
+        <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Blood</p>
+        <p><i class="fas fa-utensils"></i> <strong>Fasting:</strong> Required</p>
+        <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 2 hours</p>
+        <p>This test checks glucose levels to diagnose and monitor diabetes and hypoglycemia. Includes FBS,
+          PPBS, and RBS variations. Involves finger prick or blood draw from your vein.</p>
+        <button class="btn-book">Book Now</button>
+      </div>
+
+      <!-- Lipid Profile -->
+      <div class="test-card">
+        <img src="test-images/lipid-test.jpg" alt="Lipid Profile Test">
+        <h3>Lipid Profile</h3>
+         <p><strong>💰 Price: ₹1000</strong></p>
+        <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Blood</p>
+        <p><i class="fas fa-utensils"></i> <strong>Fasting:</strong> 9–12 hours Required</p>
+        <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 6 hours</p>
+        <p>This test measures total cholesterol, LDL, HDL, and triglycerides to assess heart health
+          and risk of cardiovascular disease.</p>
+        <button class="btn-book">Book Now</button>
+      </div>
+
+      <!-- Thyroid Profile -->
+      <div class="test-card">
+        <img src="test-images/Thyroid-Profile-Tests.webp" alt="Thyroid Profile Test">
+        <h3>Thyroid Profile (T3, T4, TSH)</h3>
+         <p><strong>💰 Price: ₹900</strong></p>
+        <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Blood</p>
+        <p><i class="fas fa-utensils-slash"></i> <strong>Fasting:</strong> Not Required</p>
+        <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 6 hours</p>
+        <p>Measures TSH, T3, and T4 to assess thyroid function. Helps detect 
+       hypothyroidism, hyperthyroidism, and monitor thyroid treatment.</p>
+        <button class="btn-book">Book Now</button>
+      </div>
+
+      <!-- Vitamin D -->
+      <div class="test-card">
+        <img src="test-images/vitamin-d-test.webp" alt="Vitamin D Test">
+        <h3>Vitamin D (25-OH)</h3>
+         <p><strong>💰 Price: ₹1250</strong></p>
+        <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Blood</p>
+        <p><i class="fas fa-utensils-slash"></i> <strong>Fasting:</strong> Not Required</p>
+        <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 12 hours</p>
+        <p>This test determines  25-hydroxyvitamin D levels to assess bone health, immune function, 
+       and calcium absorption. Helps detect deficiency and monitor supplementation.</p>
+        <button class="btn-book">Book Now</button>
+      </div>
+
+        <!-- Liver Function Test Card -->
+        <div class="test-card">
+            <img src="test-images\liver-function -test.webp" alt="Liver Function Test">
+            <h3>Liver Function Test (LFT)</h3>
+             <p><strong>💰 Price: ₹700</strong></p>
+            <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Blood</p>
+            <p><i class="fas fa-utensils"></i> <strong>Fasting:</strong> 8–10 hours Required</p>
+            <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 6 hours</p>
+            <p>This test measures liver enzymes, bilirubin, and proteins to assess liver health, detect 
+       liver diseases, and monitor ongoing treatment.</p>
+            <button class="btn-book">Book Now</button>
+        </div>
+
+        <!-- HbA1c Test Card -->
+        <div class="test-card">
+            <img src="test-images\hba1cc.jpg" alt="HbA1c Test">
+            <h3>HbA1c (Glycated Hemoglobin)</h3>
+             <p><strong>💰 Price: ₹500</strong></p>
+            <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Blood</p>
+            <p><i class="fas fa-utensils-slash"></i> <strong>Fasting:</strong> Not Required</p>
+            <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 4 hours</p>
+            <p>This test measures the average blood sugar over the past 2–3 months to diagnose 
+       and monitor diabetes, helping assess long-term glucose control.</p>
+            <button class="btn-book">Book Now</button>
+        </div>
+
+        <!-- COVID-19 RT-PCR Test Card -->
+        <div class="test-card">
+            <img src="test-images\covid-19.jpg" alt="COVID-19 RT-PCR Test">
+            <h3>COVID-19 RT-PCR</h3>
+             <p><strong>💰 Price: ₹800</strong></p>
+            <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Nasal/Throat Swab</p>
+            <p><i class="fas fa-utensils-slash"></i> <strong>Fasting:</strong> Not Required</p>
+            <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 12–24 hours</p>
+            <p>This test detects SARS-CoV-2 virus using RT-PCR technology for accurate diagnosis 
+       of active COVID-19 infection. Recommended for symptomatic patients, 
+       travel, or exposure screening.</p>
+            <button class="btn-book">Book Now</button>
+        </div>
+
+        
+
+        <!-- Kidney Function Test -->
+        <div class="test-card">
+            <img src="test-images\Kidney-Function-Test.webp" alt="Kidney Function Test">
+            <h3>Kidney Function Test (KFT)</h3>
+             <p><strong>💰 Price: ₹900</strong></p>
+            <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Blood</p>
+            <p><i class="fas fa-utensils"></i> <strong>Fasting:</strong> 8–10 hours Required</p>
+            <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 6 hours</p>
+            <p>Measures BUN, creatinine, uric acid, and electrolytes to assess kidney 
+       health, diagnose kidney disease, and monitor ongoing treatment.</p>
+            <button class="btn-book">Book Now</button>
+        </div>
+
+        <!-- ECG -->
+        <div class="test-card">
+            <img src="test-images\electrocardiogram.webp" alt="ECG Test">
+            <h3>ECG (Electrocardiogram)</h3>
+             <p><strong>💰 Price: ₹400</strong></p>
+            <p><i class="fas fa-image"></i> <strong>Sample:</strong> Heart Electrical Activity</p>
+            <p><i class="fas fa-utensils-slash"></i> <strong>Fasting:</strong> Not Required</p>
+            <p><i class="fas fa-clock"></i> <strong>TAT:</strong> Immediate</p>
+            <p>Records the heart’s electrical signals to detect irregular rhythms, heart 
+       attacks, and other cardiac conditions. Quick, painless, and non-invasive.</p>
+            <button class="btn-book">Book Now</button>
+        </div>
+
+
+        <!-- Urine Routine -->
+        <div class="test-card">
+            <img src="test-images\urine-analysis-microscopic-examination.jpg" alt="Urine Routine Test">
+            <h3>Urine Routine & Microscopy</h3>
+             <p><strong>💰 Price: ₹350</strong></p>
+            <p><i class="fas fa-vial"></i> <strong>Sample:</strong> Urine</p>
+            <p><i class="fas fa-utensils-slash"></i> <strong>Fasting:</strong> Not Required</p>
+            <p><i class="fas fa-clock"></i> <strong>TAT:</strong> 4 hours</p>
+            <p>Examines urine's physical, chemical, and microscopic properties to detect 
+       UTIs, kidney disorders, and metabolic conditions.</p>
+            <button class="btn-book">Book Now</button>
+        </div>
+    </div> 
+
+    <button class="nav-btn next-btn">&#10095;</button>
+</div>
+    <!-- <button class="nav-btn next-btn">&#10095;</button> -->
+  </div>
+</section>
+
+
+  
+<!-- ------------------------------------------------------------------------------------ -->
+
+
+<!-- ----------------------------------------------------------------------------- -->
+
+
+    <!-- Appointment Booking Form -->
+    <section id="appointment">
+        <h2>Book Appointment</h2>
+        <form id="appointmentForm">
+            <label>Name: <input type="text" id="name" required /></label>
+            <label>Email: <input type="email" id="email" required /></label>
+            <label>Phone: <input type="tel" id="phone" pattern="[0-9]{10}" required /></label>
+
+            <label>Test:
+                <select id="test" required>
+                    <option value="">Select Test</option>
+                    <option>CBC</option>
+                    <option>MRI</option>
+                    <option>Blood Sugar</option>
+                    <option>Lipid Profile</option>
+                    <option>Thyroid Profile</option>
+                    <option>Vitamin D</option>
+                    <option>Liver Function Test</option>
+                    <option>HbA1c</option>
+                    <option>COVID-19 RT-PCR</option>
+                    <option>Kidney Function Test </option>
+                    <option>ECG</option>
+                    <option>Urine Routine & Microscopy</option>
+                </select>
+            </label>
+
+            <label>Date: <input type="date" id="date" required /></label>
+            <label for="price">Price:</label>
+    <input type="text" id="selected-price" readonly><br>
+
+            <label>Payment Method:
+                <select id="paymentMethod" required>
+                    <option value="">Select</option>
+                    <option value="upi">UPI</option>
+                    <option value="card">Card</option>
+                    <option value="qr">QR</option>
+                    <option value="emi">EMI</option>
+                </select>
+            </label>
+
+             <button type="button" id="payNowBtn" style="display:none;">Pay Now</button>  
+
+            <!-- Payment Options -->
+            <div class="payment-section" id="upiSection" style="display:none;">
+                <label>UPI ID: <input type="text" id="upiId" /></label>
+            </div>
+            <div class="payment-section" id="cardSection" style="display:none;">
+                <label>Card Number: <input type="text" id="cardNumber" maxlength="16" /></label>
+                <label>Expiry: <input type="month" id="cardExpiry" /></label>
+                <label>CVV: <input type="password" id="cardCVV" maxlength="3" /></label>
+            </div>
+            <div class="payment-section" id="qrSection" style="display:none;">
+                <p>Scan to Pay:</p>
+                <img src="qr_sample.png" alt="QR Code" width="150" />
+            </div>
+            <div class="payment-section" id="emiSection" style="display:none;">
+                <label>EMI Plan:
+                    <select id="emiPlan">
+                        <option>3 months @ 5%</option>
+                        <option>6 months @ 8%</option>
+                        <option>12 months @ 12%</option>
+                    </select>
+                </label>
+            </div>
+             
+            <button type="submit">Book Appointment</button>
+        </form>
+    </section>
+
+
+
+<!-- Home Sample Collection -->
+<section id="home-sample">
+  <h2>Home Sample Collection (Optional)</h2>
+
+  <label>
+    <input type="checkbox" id="enableHomeSample" />   🏠 I want home collection
+  </label>
+
+  <form id="homeSampleForm" style="display:none; margin-top: 10px;">
+    <label>Name: <input type="text" id="hsName" required /></label>
+    <label>Phone: <input type="tel" id="hsPhone" pattern="[0-9]{10}" required /></label>
+    <label>Email: <input type="email" id="hsEmail" required /></label>
+    <label>Address: <input type="text" id="hsAddress" required /></label>
+    <label>Preferred Date: <input type="date" id="hsDate" required /></label>
+    <label>Preferred Time: <input type="time" id="hsTime" required /></label>
+
+   <div class="tests-grid">
+  <label class="test-item">
+    <input type="checkbox" value="CBC" data-price="200">
+    <span class="test-label">CBC <span class="test-price">(₹200)</span></span>
+  </label>
+
+  <label class="test-item">
+    <input type="checkbox" value="Blood Sugar" data-price="100">
+    <span class="test-label">Blood Sugar <span class="test-price">(₹100)</span></span>
+  </label>
+
+  <label class="test-item">
+    <input type="checkbox" value="Lipid Profile" data-price="500">
+    <span class="test-label">Lipid Profile <span class="test-price">(₹500)</span></span>
+  </label>
+
+  <label class="test-item">
+    <input type="checkbox" value="Thyroid Profile" data-price="400">
+    <span class="test-label">Thyroid Profile <span class="test-price">(₹400)</span></span>
+  </label>
+
+  <label class="test-item">
+    <input type="checkbox" value="Vitamin D" data-price="600">
+    <span class="test-label">Vitamin D <span class="test-price">(₹600)</span></span>
+  </label>
+
+  <label class="test-item">
+    <input type="checkbox" value="Liver Function Test" data-price="350">
+    <span class="test-label">Liver Function Test <span class="test-price">(₹350)</span></span>
+  </label>
+
+  <label class="test-item">
+    <input type="checkbox" value="Kidney Function Test" data-price="450">
+    <span class="test-label">Kidney Function Test <span class="test-price">(₹450)</span></span>
+  </label>
+
+  <label class="test-item">
+    <input type="checkbox" value="HbA1c" data-price="250">
+    <span class="test-label">HbA1c <span class="test-price">(₹250)</span></span>
+  </label>
+</div>
+
+    <p>Total Price: ₹<span id="totalPrice">0</span></p>
+
+    <label for="hspaymentMethod">Payment Method: </label>
+    <select id="hspaymentMethod" required>
+      <option value="">--- Select ---</option>
+      <option value="upi">UPI</option>
+      <option value="card">Card</option>
+      <option value="qr">QR</option>
+      <option value="cash">Cash</option>
+    </select>
+
+    <!-- Dynamic payment fields -->
+    <div id="hspaymentDetailsContainer" style="margin-top:10px;"></div>
+
+    <div style="margin-top: 15px;">
+      <button type="submit">Schedule Visit</button>
+      <button type="button" id="hspayNowBtn" style="margin-left:10px;">Pay Now</button>
+    </div>
+  </form>
+
+  <p id="hsMsg" style="margin-top:10px; color:green;"></p>
+</section>
+
+
+    <!-- Report Tracker -->
+    <section id="tracker">
+        <h2>Track Your Report</h2>
+        <input type="text" id="trackInput" placeholder="Enter Phone or Name" required />
+        <button id="trackBtn">Track</button>
+        <p id="trackStatus">Status: --</p>
+    </section>
+
+    <!-- FAQ -->
+<section id="faq">
+    <h2>❓ Frequently Asked Questions</h2>
+    <div class="faq-container">
+        <div class="faq-column">
+            <details>
+                <summary><span class="icon">➕</span>Is fasting needed for lipid test?</summary>
+                <p>Yes, 10–12 hours fasting is advised for accurate results for some tests.</p>
+            </details>
+            <details>
+                <summary><span class="icon">➕</span>Are digital reports provided?</summary>
+                <p>Yes, PDF reports are emailed and visible on your dashboard.</p>
+            </details>
+            <details>
+                <summary><span class="icon">➕</span>Can I reschedule my appointment?</summary>
+                <p>Appointments can be rescheduled at least 4 hours in advance.</p>
+            </details>
+            <details>
+                <summary><span class="icon">➕</span>What payment methods do you accept?</summary>
+                <p>We accept UPI, cards, net banking, and cash on collection.</p>
+            </details>
+        </div>
+        <div class="faq-column">
+            <details>
+                <summary><span class="icon">➕</span>How long does it take to get results?</summary>
+                <p>Most reports are available within 24 hours; some tests may take 2–3 days.</p>
+            </details>
+            <details>
+                <summary><span class="icon">➕</span>Are home sample collections available?</summary>
+                <p>Yes, home sample collection is available in select areas.</p>
+            </details>
+            <details>
+                <summary><span class="icon">➕</span>Do I need to bring documents?</summary>
+                <p>Bring valid ID and doctor prescription (if required).</p>
+            </details>
+            <details>
+                <summary><span class="icon">➕</span>Are test results confidential?</summary>
+                <p>Yes, all reports are securely stored and accessible only to you.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+
+   <!-- Insurance -->
+<section id="insurance">
+    <h2>Insurance & Payments</h2>
+    <p>We accept a wide range of health insurance providers including <strong>Star, HDFC Ergo, ICICI Lombard</strong> and many more.</p>
+    
+    <h3>Coverage</h3>
+    <ul>
+        <li>Most diagnostic tests are covered under your health insurance plan.</li>
+        <li>Cashless services available for eligible insurance policies.</li>
+        <li>Coverage depends on your policy; please check with your insurance provider.</li>
+    </ul>
+
+    <h3>Payment Options</h3>
+    <ul>
+        <li>Online payments via UPI, debit/credit cards, and net banking.</li>
+        <li>Cash payments accepted at the sample collection center.</li>
+        <li>Secure and encrypted payment processing for online transactions.</li>
+    </ul>
+
+    <h3>How to Claim</h3>
+    <ul>
+        <li>Provide your insurance card at the time of booking or sample collection.</li>
+        <li>For cashless claims, we will coordinate directly with your insurer.</li>
+        <li>Keep a copy of your receipts and reports for reimbursement if needed.</li>
+    </ul>
+
+    <p>For any questions regarding insurance coverage or payment methods, please <a href="#contact">contact our support team</a>.</p>
+</section>
+
+<footer>
+    <p>&copy; 2025 PathoCare Diagnostics. All rights reserved.</p>
+</footer>
+
+
+    <script>
+        // Ensure no past dates are allowed in the date input
+        document.addEventListener("DOMContentLoaded", () => {
+            const today = new Date().toISOString().split("T")[0];
+            document.getElementById("date").setAttribute("min", today);
+        });
+
+        // Image preview
+        const imageInput = document.getElementById("imageInput");
+        const imagePreview = document.getElementById("imagePreview");
+        if (imageInput) {
+            imageInput.addEventListener("change", function () {
+                const file = this.files[0];
+                imagePreview.innerHTML = '';
+                if (file) {
+                    const img = document.createElement("img");
+                    img.src = URL.createObjectURL(file);
+                    img.style.maxWidth = "300px";
+                    img.alt = "Uploaded medical image";
+                    imagePreview.appendChild(img);
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const enableHomeSample = document.getElementById("enableHomeSample");
+    const homeSampleForm = document.getElementById("homeSampleForm");
+    const paymentMethod = document.getElementById("paymentMethod");
+    const paymentDetailsContainer = document.getElementById("paymentDetailsContainer");
+
+    // Show/hide form
+    enableHomeSample.addEventListener("change", () => {
+        homeSampleForm.style.display = enableHomeSample.checked ? "block" : "none";
+        paymentDetailsContainer.innerHTML = "";
+        paymentMethod.value = "";
+    });
+    });
+
+    // ------------------------------------------------------------------------------
+    
+    </script>
+
+
+<!-- Link JS -->
+<script src="homeSample.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

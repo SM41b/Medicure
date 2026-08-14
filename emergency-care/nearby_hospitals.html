@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nearby Hospitals with Routes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet Routing Machine CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+  <style>
+    html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1e1e2f;
+  color: #f1f1f1;
+}
+
+#map {
+  height: 70vh;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(243, 173, 173, 0.4);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #d56749;
+  font-size: 32px;
+}
+
+/* Styled Buttons */
+button {
+  background: linear-gradient(145deg, #3742fa, #2f3542);
+  color: #fff;
+  border: 2px solid transparent;
+  padding: 12px 24px;
+  font-size: 19px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, border-color 0.3s;
+  box-shadow: 0 0 10px rgba(182, 37, 204, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(145deg, #99c0ca, #3742fa);
+  transform: scale(1.05);
+  border-color: #fff;
+}
+
+/* Back Button */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background: #FA8072;
+  border: 2px solid #f1f1f1;
+  color: #f1f1f1;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, color 0.3s;
+}
+
+.back-button:hover {
+  background: #e4e2ba ;
+  color: #1e1e2f;
+  transform: scale(1.05);
+}
+
+/* Table with Card + Column Visuals */
+#hospital-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  margin-top: 20px;
+}
+
+#hospital-table th {
+  background-color: #2f3542;
+  color: #fff;
+  text-align: left;
+  padding: 14px 18px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 20px;
+  border-bottom: 2px solid #444;
+}
+
+#hospital-table td {
+  background-color: #353b48;
+  color: #f1f1f1;
+  padding: 14px 18px;
+  vertical-align: middle;
+  border-right: 1px solid #444;
+  font-size: 18px;
+}
+
+/* Highlight first and last columns */
+#hospital-table td:first-child {
+  border-left: 3px solid #00cec9;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+#hospital-table td:last-child {
+  border-right: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Alternate Row Shading */
+#hospital-table tr:nth-child(even) td {
+  background-color: #3b465f;
+}
+
+/* Row Hover */
+#hospital-table tr {
+  transition: transform 0.2s;
+}
+#hospital-table tr:hover td {
+  transform: scale(1.01);
+  background-color: #618d36;
+}
+
+/* Action Button inside Table */
+#hospital-table td button {
+  padding: 6px 14px;
+  background: #00b894;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#hospital-table td button:hover {
+  background-color: #b20d5a;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #map {
+    height: 50vh;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #hospital-table {
+    font-size: 14px;
+  }
+
+  #hospital-table th, #hospital-table td {
+    padding: 12px;
+  }
+
+  .hospital-name {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <button class="back-button" onclick="goBack()">← 🚑 Emergency Care</button>
+
+  <div class="container">
+    <h1>Nearby Hospitals with Routes</h1>
+    <button onclick="getLocation()">📍 Find Nearby Hospitals</button>
+    <div id="map"></div>
+
+    <table id="hospital-table">
+      <thead>
+        <tr>
+          <th>Hospital Name</th>
+          <th>Estimated Time</th>
+          <th>Distance</th>
+          <th>Address</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="hospital-table-body">
+        <!-- Filled dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Leaflet Routing Machine -->
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+
+  <script>
+    let map;
+    let userMarker;
+    let hospitalMarkers = [];
+    let routes = [];
+
+    function goBack() {
+        window.location.href = "index.html";
+    }
+
+    const userIcon = L.icon({
+      iconUrl: 'https://cdn-icons-png.flaticon.com/512/64/64113.png',
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32],
+    });
+
+    const hospitalIcon = L.icon({
+      iconUrl: 'https://cdn-icons-png.flaticon.com/512/2991/2991152.png',
+      iconSize: [28, 28],
+      iconAnchor: [14, 28],
+      popupAnchor: [0, -28],
+    });
+
+    function initMap() {
+      map = L.map('map').setView([20.5937, 78.9629], 5);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError, {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0,
+        });
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function showPosition(position) {
+      const userLat = position.coords.latitude;
+      const userLng = position.coords.longitude;
+
+      map.setView([userLat, userLng], 14);
+
+      if (userMarker) map.removeLayer(userMarker);
+      userMarker = L.marker([userLat, userLng], { icon: userIcon })
+        .addTo(map)
+        .bindPopup("📍 You are here")
+        .openPopup();
+
+      // Clear old routes and markers
+      hospitalMarkers.forEach(m => map.removeLayer(m));
+      routes.forEach(r => map.removeControl(r));
+      hospitalMarkers = [];
+      routes = [];
+
+      document.getElementById("hospital-table-body").innerHTML = "<tr><td colspan='5'>Loading...</td></tr>";
+
+      const overpassURL = `https://overpass-api.de/api/interpreter?data=[out:json];node["amenity"="hospital"](around:5000,${userLat},${userLng});out;`;
+
+      fetch(overpassURL)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("hospital-table-body").innerHTML = "";
+
+          if (data.elements.length === 0) {
+            document.getElementById("hospital-table-body").innerHTML = "<tr><td colspan='5'>No nearby hospitals found.</td></tr>";
+            return;
+          }
+
+          data.elements.forEach((hospital, index) => {
+            const name = hospital.tags.name || "Unnamed Hospital";
+            const lat = hospital.lat;
+            const lon = hospital.lon;
+
+            // Fetch the address using the Nominatim API
+            const addressURL = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
+
+            fetch(addressURL)
+              .then(res => res.json())
+              .then(addressData => {
+                const address = addressData.address ? `${addressData.address.road || ""}, ${addressData.address.city || ""}, ${addressData.address.country || ""}` : "Address not found";
+
+                const hospitalMarker = L.marker([lat, lon], { icon: hospitalIcon })
+                  .addTo(map)
+                  .bindPopup(`<b>🏥 ${name}</b><br><i>${address}</i>`);
+                hospitalMarkers.push(hospitalMarker);
+
+                const router = L.Routing.control({
+                  waypoints: [
+                    L.latLng(userLat, userLng),
+                    L.latLng(lat, lon)
+                  ],
+                  lineOptions: {
+                    styles: [{ color: 'blue', opacity: 0.7, weight: 4 }]
+                  },
+                  createMarker: () => null,
+                  addWaypoints: false,
+                  routeWhileDragging: false,
+                  fitSelectedRoutes: false,
+                  show: false
+                }).addTo(map);
+
+                router.on('routesfound', function(e) {
+                  const durationMin = (e.routes[0].summary.totalTime / 60).toFixed(1);
+                  const distanceKm = (e.routes[0].summary.totalDistance / 1000).toFixed(2);
+
+                  const row = `
+                    <tr>
+                      <td>${name}</td>
+                      <td>${durationMin} mins</td>
+                      <td>${distanceKm} km</td>
+                      <td>${address}</td>
+                      <td><button onclick="zoomTo(${lat}, ${lon})">View</button></td>
+                    </tr>`;
+                  document.getElementById("hospital-table-body").insertAdjacentHTML("beforeend", row);
+                });
+
+                routes.push(router);
+              })
+              .catch(error => {
+                console.error("Error fetching address:", error);
+              });
+          });
+        });
+    }
+
+    function zoomTo(lat, lon) {
+      map.setView([lat, lon], 16);
+    }
+
+    function showError(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          alert("Permission denied for geolocation.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Position unavailable.");
+          break;
+        case error.TIMEOUT:
+          alert("Location request timed out.");
+          break;
+        default:
+          alert("An unknown error occurred.");
+          break;
+      }
+    }
+
+    initMap();
+  </script>
+
+</body>
+</html>
+
+
+<!-- ------------------------------------------------------------------------------------------ -->
+<!-- 
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+}
+
+#map {
+  height: 70vh;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 20px 0;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#hospital-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#hospital-table th, #hospital-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+#hospital-table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+#hospital-table td {
+  background-color: #fff;
+  color: #555;
+}
+
+#hospital-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#hospital-table td button {
+  padding: 5px 10px;
+  background-color: #28a745;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#hospital-table td button:hover {
+  background-color: #218838;
+}
+
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  background-color: #6c757d;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #map {
+    height: 50vh;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  #hospital-table {
+    font-size: 14px;
+  }
+
+  #hospital-table th, #hospital-table td {
+    padding: 10px;
+  }
+}  -->
+ <!-- ------------------------------------------------------------------------------------------ -->
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nearby Hospitals</title>
+  <link rel="stylesheet" href="nearby_hospitals.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+  <nav>
+    <button onclick="window.location.href='index.html'">← Back to Home</button>
+  </nav>
+  <div class="map-container">
+    <div id="map"></div>
+    <div id="details-panel">
+      <h2>Hospital Details</h2>
+      <table id="hospital-details">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Distance</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <button id="findBtn">Find Nearby Hospitals</button>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="nearby_hospitals.js"></script>
+</body>
+</html>
+ -->

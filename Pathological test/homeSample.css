@@ -1,0 +1,224 @@
+/* --------------------------------------------home collection------------------------------------ */
+/* ===== Home Sample Collection Section ===== */
+#home-sample {
+    max-width: 1250px;
+    margin: 40px auto;
+    padding: 25px 20px;
+    background: #dceee7; /* light soft blue background */
+    border-radius: 25px;
+    box-shadow: 0 15px 20px rgba(18, 7, 7, 0.59);
+    font-family: 'Nunito', sans-serif;
+    animation: fadeInUp 1.0s ease;
+}
+
+/* Section Title */
+#home-sample h2 {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: #022447;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#home-sample h2::after {
+    content: "";
+    display: block;
+    width: 400px;
+    height: 3px;
+    background: #01131d;
+    margin: 3px auto 0;
+    border-radius: 2px;
+}
+
+/* === Updated Outer Checkbox Styling === */
+#home-sample > label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    font-weight: 1000;
+    margin-bottom: 24px;
+    color: #004080;
+    background: #eaf4ff;
+    padding: 16px 28px;
+    border-radius: 30px;
+    border: 5px solid #c8e1ff;
+    box-shadow: 0 4px 10px rgba(0, 119, 182, 0.3);
+    cursor: pointer;
+    width: fit-content;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s ease;
+}
+
+#home-sample > label:hover {
+    background: #f7cef1;
+    box-shadow: 0 6px 14px rgba(0, 119, 182, 0.25);
+    transform: translateX(-50%) scale(1.03);
+}
+
+/* Checkbox appearance */
+#home-sample input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #0077b6;
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+
+/* Form Styling */
+#homeSampleForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+/* Form Labels + Inputs */
+#homeSampleForm label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: #333;
+    font-size: 18px;
+}
+
+#homeSampleForm input[type="text"],
+#homeSampleForm input[type="tel"],
+#homeSampleForm input[type="email"],
+#homeSampleForm input[type="date"],
+#homeSampleForm input[type="time"],
+#homeSampleForm select {
+    padding: 10px 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 19px;
+    transition: 0.3s;
+}
+
+#homeSampleForm input:focus,
+#homeSampleForm select:focus {
+    border-color: #0077b6;
+    box-shadow: 0 0 6px rgba(0, 119, 182, 0.2);
+    outline: none;
+}
+
+/* Tests Grid */
+.tests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.test-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.test-item:hover {
+    background: #e6f0ff;
+    border-color: #0077b6;
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.12);
+}
+
+.test-item input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.15);
+}
+
+.test-label {
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.test-price {
+    font-size: 0.82rem;
+    color: #0077b6;
+    font-weight: 700;
+}
+
+/* Selected Test Styling */
+.test-item:has(input[type="checkbox"]:checked) {
+    border-color: #0077b6;
+    background: #d6ebff;
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.15);
+}
+
+/* Total Price */
+#totalPrice {
+    font-weight: 600;
+    font-size: 20px;
+    color: #e74c3c;
+    margin-top: 15px;
+}
+
+/* Buttons */
+#homeSampleForm button {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff;
+    background: linear-gradient(135deg, #0077b6, #00509e);
+}
+
+#homeSampleForm button:hover {
+    background: linear-gradient(135deg, #00509e, #0077b6);
+    transform: translateY(-2px);
+}
+
+#hspayNowBtn {
+    background: #00a86b;
+}
+
+#hspayNowBtn:hover {
+    background: #007a50;
+}
+
+/* Success message */
+#hsMsg {
+    font-size: 0.95rem;
+    color: green;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    #home-sample {
+        padding: 20px 15px;
+    }
+
+    .tests-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #homeSampleForm button {
+        font-size: 13px;
+        padding: 10px 14px;
+    }
+
+    #homeSampleForm label,
+    #totalPrice {
+        font-size: 13px;
+    }
+}

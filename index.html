@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="MEDICURE - Your Trusted Health Partner"/>
+  <title>MEDICURE - Home</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="style2.css"/>
+  <link rel="stylesheet" href="./chatbot/styles.css"/>
+</head>
+
+<body>
+  <!-- Login/Logout Button -->
+  <div class="auth-buttons">
+    <a id="auth-btn" class="login-btn" href="./login page/index1.html">Login / Sign up</a>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1><b><strong> MEDICURE</strong></b></h1>
+      <h2> Your Trusted Health Partner </h2>
+      <nav>
+        <a href="#services"> Services </a>
+        <a href="#about"> About </a>
+        <a href="#ecommerce"> E-Commerce </a>
+        <a href="#team"> Our Team </a>
+        <a href="#contact"> Contact </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+   
+   <!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text animate-slide-in-left">
+      
+      <h3>We Provide </h3>
+      <h2 class="animated-phrases">
+        <span>🧠 Instant Disease Prediction</span>
+        <span>🚨 24/7 Emergency Help</span>
+        <span>👨‍⚕️ Expert Doctor Consultation</span>
+        <span>🧪 Accurate Pathological Tests</span>
+        <span>🛒 Buy Medicine and Medical Equipments </span>
+      </h2>
+      
+      <div class="tagline">
+        <h2>
+          From consultation to cure<br>
+          Our service is pure<br>
+          Providing care is sure<br>
+          Just use Medicure!
+        </h2>
+      </div>
+      <p>Comprehensive care for your well-being, whenever you need it.</p>
+      <button onclick="scrollToServices()">Explore Our Services</button>
+    </div>
+    <div class="hero-image animate-slide-in-right floating-image">
+      <img src="./doctor-lady_photo.jpg" alt="Doctor Image" />
+    </div>
+  </div>
+</section>
+
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="services-container">
+      <a href="javascript:accessService( 'https://disease-predictor-from-symptoms.streamlit.app/' )" class="service">
+        <div class="emoji">🩺</div>
+        <h3>Predict Diseases</h3>
+        <p>Advanced tools to predict potential health issues early.</p>
+      </a>
+      <a href="javascript:accessService('./emergency-care/index.html')" class="service">
+        <div class="emoji">🚑</div>
+        <h3>Emergency Care</h3>
+        <p>24/7 emergency services for immediate attention.</p>
+      </a>
+      <a href="javascript:accessService('./consultancy/index2.html')" class="service">
+        <div class="emoji">👨‍⚕️</div>
+        <h3>Specialist Consultations</h3>
+        <p>Access to expert healthcare professionals.</p>
+      </a>
+      <a href="javascript:accessService('./Pathological test/index.html')" class="service">
+        <div class="emoji">🔬</div>
+        <h3>Pathological Tests</h3>
+        <p>Comprehensive lab tests for accurate diagnosis.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+<section id="about" class="section about" aria-labelledby="about-heading">
+  <div class="container">
+    <h2 id="about-heading">
+      <span class="icon"><i class="fas fa-heartbeat"></i></span> About MEDICURE
+    </h2>
+    <p>
+      At <strong>MEDICURE</strong>, we believe in providing high-quality healthcare that focuses on your well-being. 
+      With compassion, accessibility, and patient satisfaction at the core of our services, we strive to make healthcare 
+      easier, faster, and more effective for everyone. Through collaborations with top doctors, hospitals, and NGOs, 
+      we also organize community outreach programs like blood donation camps to give back to society.
+    </p>
+    
+  </div>
+</section>
+
+
+  <!-- E-Commerce -->
+<section id="ecommerce" class="section ecommerce">
+  <h2><span class="emoji"><strong>🛒</strong></span>Our E-Commerce Store</h2>
+  <p>Explore high-quality medical products and essential healthcare supplies curated with care for you and your family.</p>
+
+  <div class="features">
+    <div class="feature-card">
+      <h3>Medicines</h3>
+      <p>Buy prescribed and over-the-counter medicines with fast delivery and assured quality.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Wellness</h3>
+      <p>Browse health supplements, immunity boosters, and wellness essentials to stay fit and strong.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Medical Equipment</h3>
+      <p>Get reliable healthcare devices like thermometers, BP monitors, and oxygen meters for home care.</p>
+    </div>
+  </div>
+
+  <button onclick="accessService('./ecommerce/index.html')">  <span class="emoji"><strong>🛍️</strong></span> Visit Our Store</button>
+</section>
+
+
+  <!-- Chatbot -->
+  <button class="chatbot-btn" onclick="toggleChat()">💬 Health Assistant</button>
+  <div class="chatbot-container" id="chatbot">
+    <div class="chatbot-header">
+      <h3>🩺 Health Assistant</h3>
+      <button onclick="toggleChat()">✖️</button>
+    </div>
+    <div class="chatbot-messages" id="messages">
+      <h3>Hello! I am your Health Assistant.</h3>
+      <p>You can ask me about:</p>
+      <ul style="list-style-type: none;">
+        <li><b>💊 Medicine Information (medication) </b></li>
+        <li><b>⚠️ Health Risk Assessments (health risk) </b></li>
+        <li><b>🩺 Personalized Health Advice (health advice)</b></li>
+        <li><b>🌿 Natural Home Remedies (home remedies)</b></li>
+        <li><b>🧠 Mental Health Support (mental health)</b></li>
+      </ul>
+      <div class="calculator">
+        <h3>🧮 BMI Calculator</h3>
+        <label>Weight (kg): <input id="weight" type="number" /></label>
+        <label>Height (cm): <input id="height" type="number" /></label>
+        <button onclick="calculateBMI()">Calculate</button>
+        <p id="bmi-result"></p>
+      </div>
+      <div id="chatContainer"></div>
+    </div>
+    <div class="chatbot-footer">
+      <input type="text" id="user-input" placeholder="Ask me anything..." />
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+<!-- Team Section -->
+<section id="team" class="section team">
+  <h2>The Team Behind MEDICURE</h2>
+  <div class="team-container">
+    <!-- Team Member 1 -->
+    <div class="team-member riddhi">
+      <img src="./Riddhi_image.jpeg" alt="Riddhi Santra" />
+      <h3>Riddhi Santra</h3>
+      <p>Frontend Developer</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/riddhi" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" />
+        </a>
+
+        <a href="https://www.instagram.com/rid_megha/?hl=en" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/800px-Instagram_logo_2022.svg.png" alt="Instagram" />
+        </a>
+        
+        <a href="https://www.facebook.com/riddhi" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Team Member 2 -->
+    <div class="team-member sanjukta">
+      <img src="./Sanjukta_image.jpeg" alt="Sanjukta Khatua" />
+      <h3>Sanjukta Khatua</h3>
+      <p>ML Developer</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/sanjukta-khatua-9b52712a7" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" />
+        </a>
+        <a href="https://www.instagram.com/_sanjukta987/" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/800px-Instagram_logo_2022.svg.png" alt="Instagram" />
+        </a>
+        
+        <a href="https://www.facebook.com/share/19tGLCEQpF/" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Team Member 3 -->
+    <div class="team-member sarmistha">
+      <img src="./Sarmistha_image.jpg" alt="Sarmistha Sen" />
+      <h3>Sarmistha Sen</h3>
+      <p>Backend Developer</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/sarmistha-sen-2371502aa/" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" />
+        </a>
+        <a href="https://www.instagram.com/melodious_nightingale_04/" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/800px-Instagram_logo_2022.svg.png" alt="Instagram" />
+        </a>
+        
+        <a href="https://www.facebook.com/sarmistha" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Team Member 4 -->
+    <div class="team-member sharanya">
+      <img src="./Sharanya_image.jpg" alt="Sharanya Mandal" />
+      <h3>Sharanya Mandal</h3>
+      <p>Backend Developer</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/sharanya-mandal/" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" />
+        </a>
+        <a href="https://www.instagram.com/sharanya" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/800px-Instagram_logo_2022.svg.png" alt="Instagram" />
+        </a>
+        
+        <a href="https://www.facebook.com/sharanya" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+
+   <!-- Contact -->
+   <section id="contact" class="section contact">
+    <h2>Contact Us</h2>
+    <p>For inquiries, appointments, or issues related to your health situation, please get in touch:</p>
+
+    <div class="contact-info">
+      <div>
+        <h3>Email</h3>
+        <p><a href="mailto:support@medicure.com">support@medicure.com</a></p>
+      </div>
+      <div>
+        <h3>Phone</h3>
+        <p><a href="tel:+1234567890">+123 456 7890</a></p>
+      </div>
+    </div>
+
+    <form id="contact-form" class="contact-form">
+      <h3>Tell Us About Your Issue</h3>
+      <input type="text" name="name" placeholder="Your Full Name" required />
+      <input type="email" name="email" placeholder="Your Email Address" required />
+      <textarea name="issue" placeholder="Describe your situation, symptoms, or issue..." rows="6" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MEDICURE. All rights reserved.</p>
+  </footer>
+
+  <script src="./chatbot/script.js" defer></script>
+  <script>
+    // Scroll to services section
+    function scrollToServices() {
+      document.getElementById("services").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Check login state
+    window.addEventListener("DOMContentLoaded", () => {
+      const loggedInUser = localStorage.getItem("loggedInUser");
+      const authBtn = document.getElementById("auth-btn");
+
+      if (loggedInUser) {
+        authBtn.textContent = "Logout";
+        authBtn.href = "#";
+        authBtn.onclick = () => {
+          localStorage.removeItem("loggedInUser");
+          window.location.reload();
+        };
+      } else {
+        authBtn.textContent = "Login / Sign up";
+        authBtn.href = "./login page/index1.html";
+      }
+    });
+
+    // Redirect to login if not logged in
+    function accessService(url) {
+      const loggedInUser = localStorage.getItem("loggedInUser");
+      if (!loggedInUser) {
+        alert("Please login to access this feature.");
+        window.location.href = "./login page/index1.html";
+      } else {
+        window.location.href = url;
+      }
+    }
+  </script>
+  <script src="script.js" defer></script>
+</body>
+</html>
+

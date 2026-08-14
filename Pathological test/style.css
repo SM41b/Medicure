@@ -1,0 +1,949 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #e6ecf1;
+  color: #333;
+  line-height: 1.6;
+  padding: 25px;
+  animation: fadeInBody 1s ease-in-out;
+}
+
+/* ===== Header Section ===== */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 19px 15px 15px 15px; /* reduced header height */
+  border-radius: 10px;
+  animation: fadeInUp 3s ease;
+  position: relative;
+  background: linear-gradient(135deg,#eaf6ff,#bec7cc, #aee1ec);
+    /* ✨ Elegant box shadow */
+    box-shadow: 0 4px 12px rgba(0, 121, 107, 0.25),
+            0 0 10px rgba(0, 121, 107, 0.15);
+}
+
+/* Animated emoji and heading */
+header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 1.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  animation: slideFadeIn 1.8s ease forwards;
+}
+
+/* Emoji styling and animation */
+header h1::before {
+  content: "🩺";
+  font-size: 2.3rem;
+  display: inline-block;
+  animation: pulseEmoji 2s infinite ease-in-out;
+}
+
+@keyframes pulseEmoji {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(0, 121, 107, 0.2));
+  }
+  50% {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 8px rgba(0, 121, 107, 0.4));
+  }
+}
+
+@keyframes slideFadeIn {
+  from {
+    transform: translateY(-25px);
+    opacity: 0;
+    letter-spacing: 5px;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* ===== MEDICURE Back Button ===== */
+#back-home {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+}
+
+#back-home .medicure-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #00796b;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#back-home .medicure-button:hover {
+  background: #004d40;
+  transform: translateY(-2px);
+}
+
+/* ===== Navigation ===== */
+nav {
+  margin-top: 10px; /* reduced top margin */
+}
+
+nav a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 600;
+  background: #938984;
+  padding: 8px 15px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+nav a:hover {
+  background: rgba(12, 1, 43, 0.649);
+  color: #0e1010;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== Responsive Header ===== */
+@media (max-width: 768px) {
+  header {
+    padding: 8px 5px;
+  }
+
+  header h1 {
+    font-size: 1.7rem;
+    gap: 6px;
+  }
+
+  header h1::before {
+    font-size: 2rem;
+  }
+
+  #back-home .medicure-button {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  nav a {
+    margin: 5px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+
+
+*/
+/* Hide extra tests */
+.test-card.hidden {
+    display: none;
+}
+
+/* General Sections */
+section {
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 1s ease;
+}
+
+
+
+/* Forms */
+form {
+    max-width: 600px;
+    margin: auto;
+    animation: fadeInUp 1.2s ease;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 16px;
+    border: 1px solid #ccd6e0;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #0077b6;
+}
+
+/* All buttons */
+button {
+    background: #00509e;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background: #003865;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* QR Image */
+#qrSection img {
+    display: block;
+    margin: 15px auto;
+    width: 180px;
+    border: 2px solid #ccd6e0;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+#qrSection img:hover {
+    transform: scale(1.1);
+}
+
+/* Text Animations */
+h1,
+h2,
+h3,
+p {
+    animation: fadeInUp 1s ease;
+}
+
+/* Animations */
+@keyframes fadeInBody {
+    0% {
+        opacity: 0;
+        background-color: #ffffff;
+    }
+
+    100% {
+        opacity: 1;
+        background-color: #eaf6ff;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+    .tests-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .test-card {
+        width: 90%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        margin-top: 30px;
+    }
+}
+
+/* Welcome Section */
+.welcome-section {
+    background: url('imagesheader-bg.jpg') no-repeat center center/cover;
+    text-align: center;
+    margin: 50px auto;
+    padding: 80px 20px;
+    max-width: 100%;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    animation: slideFadeIn 1.5s ease;
+}
+
+.welcome-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+}
+
+.welcome-section h1,
+.welcome-section p {
+    position: relative;
+    z-index: 2;
+    animation: moveText 2s ease-in-out forwards;
+}
+
+.welcome-section h1 {
+    font-size: 2.8rem;
+    color: #02274d;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.welcome-section p {
+    font-size: 1.15rem;
+    color: #062e15;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+@keyframes slideFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveText {
+    0% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.more-tests-container {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btn-more-tests {
+    background-color: #ff9800;
+    color: white;
+    padding: 12px 28px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-more-tests:hover {
+    background-color: #e68900;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+
+/* Container */
+.tests-section {
+    position: relative;
+    padding: 20px;
+    background: #f8f8f8;
+}
+
+/* Heading + View All */
+.tests-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.tests-header h2 {
+    font-size: 24px;
+    margin: 0;
+}
+.view-all-btn {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Scroll Container */
+.tests-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 15px;
+    padding-bottom: 10px;
+}
+.tests-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Test Card */
+.test-card {
+    flex: 0 0 250px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 60px; /* space for button */
+}
+
+.test-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.test-card h3 {
+    font-size: 18px;
+    margin: 10px;
+    color: #333;
+}
+
+/* Highlight Pill */
+.highlight-pill {
+    display: inline-block;
+    background: #ff6f61;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 50px;
+    font-size: 12px;
+    margin: 0 10px 10px;
+}
+
+/* Price Styling */
+.price-section {
+    margin: 0 10px;
+    font-size: 14px;
+}
+.price-old {
+    text-decoration: line-through;
+    color: #888;
+    margin-right: 5px;
+}
+.price-new {
+    color: #28a745;
+    font-weight: bold;
+}
+
+#payNowBtn {
+  background: #007bff;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 10px 0;
+  font-size: 16px;
+}
+#payNowBtn:hover {
+  background: #0056b3;
+}
+
+
+/* Book Now Button */
+.book-now {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.book-now:hover {
+    background: #0056b3;
+}
+
+/* Navigation Arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 50%;
+    z-index: 2;
+}
+.arrow-left {
+    left: -10px;
+}
+.arrow-right {
+    right: -10px;
+}
+.arrow:hover {
+    background: rgba(0,0,0,0.8);
+}
+/* ------------------------------------------------------------------------------------- */
+/* ===== Report Tracker Section ===== */
+#tracker {
+    background: #ffffff;
+    padding: 20px 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* max-width: 600px; */
+    margin: 30px auto;
+    text-align: center;
+    animation: fadeInUp 1.8s ease;
+}
+
+#tracker h2 {
+    color: #230f4b;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    position: relative;
+}
+
+#tracker h2::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 3px;
+    background: #0077b6;
+    margin: 5px auto 0;
+    border-radius: 2px;
+}
+
+/* Input & Button Styling */
+#trackInput {
+    width: 45%;
+    padding: 10px 15px;
+    border: 2px solid #081217;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#trackInput:focus {
+    border-color: #0096c7;
+    box-shadow: 0 0 8px rgba(0, 150, 199, 0.3);
+}
+
+/* Track Button */
+#trackBtn {
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.8s ease;
+}
+
+#trackBtn:hover {
+    background: linear-gradient(135deg, #dbb0f2, #448bb2);
+    transform: translateY(-2px);
+    color: #0e1010;
+    box-shadow: 0 4px 8px rgba(0, 119, 182, 0.3);
+}
+
+/* Status Text */
+#trackStatus {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #0c345c;
+    font-weight: 700;
+    background: rgba(0, 119, 182, 0.05);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* Small fade animation */
+@keyframes fadeInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ----------------------------------------------------------------------- */
+/* ===== FAQ Section ===== */
+#faq {
+    /* max-width: 900px; */
+    margin: 30px auto;
+    padding: 25px 20px;
+    background: #f9fbff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+#faq h2 {
+    font-size: 1.8rem;
+    color: #004080;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+#faq h2::after {
+    width: 60px;
+    height: 3px;
+    background: #0077b6;
+    margin: 10px auto 0;
+}
+
+/* ===== Two-column layout ===== */
+#faq .faq-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Each column takes 50% width */
+#faq .faq-column {
+    flex: 1 1 45%; /* 45% width + gap ensures two columns */
+    display: flex;
+    flex-direction: column;
+}
+
+/* FAQ Items */
+#faq details {
+    background: #ffffff;
+    margin-bottom: 10px;
+    padding: 12px 18px;
+    border-left: 4px solid #0077b6;
+    border-radius: 8px;
+}
+
+#faq details[open] {
+    background: #e6f0ff;
+}
+
+/* Summary (Left aligned) */
+#faq summary {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #004080;
+    display: block;
+    text-align: left; /* Align text left */
+    outline: none;
+}
+
+#faq summary:hover {
+    color: #0077b6;
+}
+
+/* Icon on left side */
+#faq summary .icon {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#faq details[open] summary .icon {
+    transform: rotate(45deg);
+    color: #0077b6;
+}
+
+/* Answer text */
+#faq p {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.4;
+    padding-left: 2px;
+}
+
+/* Smooth expand transition */
+#faq details p {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+#faq details[open] p {
+    max-height: 200px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #faq .faq-container {
+        flex-direction: column; /* single column on mobile */
+    }
+    #faq .faq-column {
+        flex: 1 1 100%;
+    }
+}
+/* ---------------------------------------------------------------------- */
+
+/* ===== Compact Insurance Section ===== */
+#insurance {
+   
+    margin: 25px auto;           /* Reduced top/bottom spacing */
+    padding: 15px 10px;          /* Reduced padding */
+    background: #f9fbff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+#insurance h2 {
+    font-size: 1.9rem;           /* Smaller heading */
+    color: #00509e;
+    text-align: center;
+    margin-bottom: 12px;         /* Reduced spacing */
+    font-weight: 800;
+}
+
+#insurance h2::after {
+    /* width: 60px; */
+    height: 3px;
+    background: #0077b6;
+    margin: 8px auto 0;
+}
+
+#insurance h3 {
+    font-size: 1.1rem;           /* Smaller subheading */
+    color: #004080;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#insurance p {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.4;            /* Reduced line-height */
+    margin-bottom: 8px;         /* Less spacing */
+}
+
+#insurance ul {
+    list-style-type: disc;
+    margin-left: 18px;
+    margin-bottom: 10px;
+}
+
+#insurance ul li {
+    margin-bottom: 5px;          /* Reduced space between list items */
+    font-size: 0.93rem;          /* Slightly smaller text */
+    color: #333;
+}
+
+/* Link styling */
+#insurance a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#insurance a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    padding: 15px 0;             /* Reduced padding */
+    background: #00509e;
+    color: #ffffff;
+    font-size: 0.9rem;           /* Smaller font */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 30px;            /* Reduced spacing from content */
+    box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.05);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #insurance {
+        padding: 15px 12px;
+    }
+
+    #insurance h2 {
+        font-size: 1.5rem;
+    }
+
+    #insurance h3 {
+        font-size: 1rem;
+    }
+
+    #insurance p, #insurance ul li {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ----------------------------------------------------------------new styling------------------------ */
+/* --- Tests slider (scoped so it won't affect other sliders) --- */
+#tests .slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1300px;
+  background: #eff5d6;
+  margin: 0 auto;
+  padding-inline: 20px;     /* reduced white space on sides */
+  display: block;
+  min-height: 300px;        /* ensures arrows stay vertically centered */
+}
+
+/* Slider track */
+#tests .tests-slider {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+}
+
+/* Cards */
+#tests .test-card {
+  flex: 0 0 280px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#tests .test-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+#tests .test-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+#tests .test-card h3 { 
+  color: #00796b; 
+  margin-bottom: 8px; 
+  font-size: 1.1rem; 
+}
+#tests .test-card p  { font-size: 14px; margin: 3px 0; }
+
+#tests .btn-book {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #00796b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#tests .btn-book:hover { background: #004d40; }
+
+/* --- Arrows (centered & stable) --- */
+#tests .nav-btn {
+  position: absolute;
+  top: 50%;                       /* center vertically */
+  transform: translateY(-50%);    /* adjust perfectly */
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+   /* Fix alignment issue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: background 0.25s ease, opacity 0.25s ease;
+}
+#tests .nav-btn:hover { background: rgba(0,0,0,0.85); }
+
+#tests .prev-btn { left: 5px; }
+#tests .next-btn { right: 5px; }
+
+/* Disabled arrows at edges */
+#tests .nav-btn.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  /* cursor: default; */
+    cursor: not-allowed;
+}
+
+/* Edge gradient hint */
+#tests .slider-container::before,
+#tests .slider-container::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 24px;
+  pointer-events: none;
+}
+#tests .slider-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(234,246,255,1), rgba(234,246,255,0));
+}
+#tests .slider-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(234,246,255,1), rgba(234,246,255,0));
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  #tests .slider-container { padding-inline: 24px; }
+  #tests .nav-btn { height: 36px; width: 36px; font-size: 20px; }
+}
+
+

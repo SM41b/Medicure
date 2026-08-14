@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ------------------------------------------------------------------------------------------------------ -->
+    <!-- Chatbot part -->
+    <!-- Chatbot Button -->
+    <button class="chatbot-btn" onclick="toggleChat()">💬 Health Assistant</button>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <h3> <b>🩺  Health Assistant </b></h3>
+            <button onclick="toggleChat()"> ✖️ </button>
+        </div>
+
+    <div class="chatbot-messages" id="messages">
+        <h3>Hello ! I am your  Health Assistant. </h3>
+        <p>You can ask me on the related topics :</p>
+        <ul style="list-style-type: none;" >
+            <li><b> 💊  Medicine Information (medication) </b></li>     
+            <li> <b>⚠️  Health Risk Assessments (health risk) </b> </li>
+            <li> <b>🩺  Personalized Health Advice (health advice) </b></li>
+            <li> <b>🌿  Natural Home Remedies (home remedies) </b></li>
+            <li> <b>🧠  Mental Health Support (mental health) </b></li>
+        </ul>
+      
+        <div class="calculator">
+            <h3>🧮 BMI Calculator</h3>
+            <label>Weight (kg): <input id="weight" type="number"></label>
+            <label>Height (cm): <input id="height" type="number"></label>
+            <button onclick="calculateBMI()">Calculate</button>
+            <p id="bmi-result"></p>
+          </div>
+          <div id="chatContainer"></div>
+    </div>
+    
+      
+    
+        <div class="chatbot-footer">
+            <input type="text" id="user-input" placeholder="Ask me anything..." onkeypress>
+            <button id="send-btn" onclick>Send</button> 
+            
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+

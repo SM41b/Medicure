@@ -1,0 +1,495 @@
+/* Services Section    ;  About Section   ;  E-Commerce Section  ;  Team Section  */
+
+/* Services Section */
+#section {
+    text-align: center;
+    padding: 70px 20px;
+    background: linear-gradient(to bottom, #c2c3f3, #c0ecf1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Horizontal scroll container */
+.services-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 20px 0;
+    gap: 30px;
+    scroll-snap-type: x mandatory;
+    margin-left: 20px;
+}
+
+/* Smooth scroll experience */
+.services-container::-webkit-scrollbar {
+    height: 8px;
+}
+.services-container::-webkit-scrollbar-thumb {
+    background: #92dfd0;
+    border-radius: 10px;
+}
+
+/* Individual service card */
+.service {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: space-between;
+    padding: 25px;
+    min-width: 320px;
+    height: 220px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #ccedf1, #e0c59a);
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    color: #333;
+    position: relative;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: background 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Ensures text is centered */
+}
+
+/* Emoji container */
+.service .emoji {
+    font-size: 46px;
+    margin-bottom: 10px;
+}
+
+/* Hover effect with smooth color transitions */
+.service:hover {
+    background: linear-gradient(135deg, #00cec9, #b5e6d8);
+    color: white;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.service h3 {
+    margin: 10px 0 6px;
+    font-size: 23px;
+    font-weight: 750;
+    color: inherit;
+}
+
+/* Description */
+.service p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: black;
+}
+
+/* Focus for accessibility */
+.service:focus {
+    outline: 3px solid #00b894;
+    outline-offset: 4px;
+}
+
+/* CSS for mobile devices */
+
+@media (max-width: 600px) {
+  #services h2 {
+    font-size: 26px;
+  }
+
+  .service p {
+    font-size: 14px;
+  }
+
+  .services-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .service-card {
+    width: 70%;
+    margin: 30px;
+  }
+}
+
+
+/* Floating emoji animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+.service .emoji {
+    font-size: 36px;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+#services h2 {
+    font-size: 36px;
+    color: 	#000080;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Underline effect */
+#services h2::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, #253760, #55efc4);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    border-radius: 2px;
+}
+  /* --------------------------------------------------------------------------------------- */
+   /* About Section */
+.about {
+    background: linear-gradient(135deg, #ce45cc, #fbd7a0);
+    padding: 80px 40px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+    margin: 60px auto;
+    max-width: 1100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.about:before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    animation: rotateEffect 10s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateEffect {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Continuous Fade-in Effect */
+.about p {
+    font-size: 30px;
+    font-weight: 450;
+    max-width: 850px;
+    margin: 20px auto;
+    color: #555;
+    line-height: 1.7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 4s ease-in-out infinite; /* Infinite loop */
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+.about {
+    transform: scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.about:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 15px 35px rgba(0, 0, 0, 0.25);
+    border: 4px solid #c2bc11;
+}
+
+/* Glowing heading effect on hover */
+.about:hover h2 {
+    text-shadow: 0 0 10px #fff, 0 0 15px #3e0412;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.about h2 {
+    font-size: 38px;
+    color: #222;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+}
+
+.about h2 .icon {
+    font-size: 40px;
+    color: #f39c12;
+    margin-right: 15px;
+}
+
+.about p {
+    font-size: 20px;
+    max-width: 850px;
+    margin: 20px auto;
+    color: #555;
+    line-height: 1.7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.about p:hover {
+    color: #333;
+}
+
+
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+    .about {
+        padding: 60px 20px;
+    }
+
+    .about h2 {
+        font-size: 30px;
+    }
+
+    .about p {
+        font-size: 18px;
+    }
+
+   
+}
+
+/* ---------------------------------------------------------------------------------------- */
+
+/* E-Commerce Section -   */
+.section.ecommerce {
+    background: linear-gradient(to right, #e6f7ff, #f0fffa);
+    padding: 70px 30px;
+    margin: 60px auto;
+    max-width: 1300px;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 150, 136, 0.15);
+    transition: transform 0.3s ease;
+  }
+  
+  .section.ecommerce:hover {
+    transform: translateY(-5px);
+  }
+  
+  .section.ecommerce h2 {
+    font-size: 2.5rem;
+    color: #00695c;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .section.ecommerce p {
+    font-size: 1.2rem;
+    color: #333;
+    max-width: 750px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+  }
+  
+  .section.ecommerce .features {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  
+  .feature-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 150, 136, 0.1);
+    padding: 25px 20px;
+    width: 280px;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature-card h3 {
+    color: #001496;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .feature-card p {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .section.ecommerce button {
+    background-color: #009688;
+    color: white;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 150, 136, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .section.ecommerce button:hover {
+    background-color: #00796b;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .section.ecommerce {
+      padding: 50px 20px;
+    }
+  
+    .section.ecommerce h2 {
+      font-size: 2rem;
+    }
+  
+    .section.ecommerce .features {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .feature-card {
+      width: 90%;
+    }
+  
+    .section.ecommerce button {
+      width: 100%;
+      padding: 12px 0;
+    }
+  }
+    /* ------------------------------------------------------------------------------------------- */
+
+/* General Team Section Styling */
+.team {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #faf9d4; /* Very Light Pink */
+  border-radius: 10px;
+}
+
+/* Team Container */
+.team-container {
+  display: flex;
+  justify-content: space-around; /* Distribute items evenly */
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Team Member Styling */
+.team-member {
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: #f8f9fa;
+  width: 200px; /* Set fixed width to prevent overflow */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  margin-bottom: 20px; /* Space between rows */
+  position: relative;
+}
+
+.team-member:hover {
+  transform: translateY(-10px); /* Float effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Image Styling */
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #050000;
+}
+
+/* Name and Role Styling */
+.team-member h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.team-member p {
+  font-size: 14px;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Social Links Styling */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.social-links a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-links img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease-in-out;
+  filter: grayscale(100%); /* Default to black icon */
+}
+
+.social-links a:hover img {
+  transform: scale(1.2); /* Enlarge icons on hover */
+  filter: grayscale(0%); /* Remove grayscale on hover */
+}
+
+/* Specific Color Classes */
+.team-member .riddhi { color: #7ba9da6d ; }  /* Blue */
+.sanjukta { color: #95e5a8; }  /* Green */
+.sarmistha { color: #c304a3; }  /* Pink */
+.sharanya { color: #fe0e32e7; }  /* Yellow */
+
+/* Hover Effect */
+.team-member:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .team-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .team-member {
+      width: 80%;
+      margin-bottom: 20px;
+  }
+
+  .social-links {
+      gap: 10px; /* Less gap on smaller screens */
+  }
+}

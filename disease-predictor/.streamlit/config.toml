@@ -1,0 +1,7 @@
+[theme]
+primaryColor = "#C71585"      
+backgroundColor = "#FFE4E1"               #for app background
+secondaryBackgroundColor = "#7B68EE"      # for content areas
+textColor = "#000000"                     # for readable text
+font = "sans serif"                       # Font style
+buttons="#F0FFFF"

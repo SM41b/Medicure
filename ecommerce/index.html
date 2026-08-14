@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Medicine Store — Clean Modern</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">💊 Medicine & Health Store</div>
+      <input id="searchBar" type="search" placeholder="Search medicines, equipment..." />
+    </div>
+    <div id="back-home">
+      <a href='../index.html' class="medicure-button">🏠 ← MEDICURE</a>
+    </div>
+  </header>
+
+  <div class="wrap main-layout">
+    <aside class="sidebar">
+      <h3>Categories</h3>
+      <nav id="categoryMenu" class="categories"></nav>
+    </aside>
+
+    <section class="catalog">
+      <div id="medicineList" class="grid"></div>
+      <div class="center">
+        <button id="showMoreBtn" class="btn secondary">Show More</button>
+      </div>
+    </section>
+
+    <aside class="cart" id="cartPanel">
+      <h3>🛒 Cart</h3>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">Total: ₹<span id="cartTotal">0</span></div>
+        <div class="cart-actions">
+          <button id="clearCartBtn" class="btn secondary">Clear</button>
+          <button id="checkoutBtn" class="btn primary">Checkout</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-panel">
+      <button class="close-btn" id="closePayment">&times;</button>
+      <h2>Checkout</h2>
+      <form id="checkoutForm" class="checkout-form">
+        <label><input name="name" required placeholder="Full name" /></label>
+        <label><input name="email" type="email" required placeholder="Email" /></label>
+        <label><input name="phone" type="tel" required placeholder="Phone number" /></label>
+        <label><input name="address" required placeholder="Address (house, street)" /></label>
+        <div class="row">
+          <input name="city" placeholder="City" required />
+          <input name="state" placeholder="State" required />
+        </div>
+        <label><input name="pincode" placeholder="Pincode" required /></label>
+<!-- ------new add--- -->
+        <label class="full">
+  Coupon Code 🎟️
+  <select id="couponDropdown">
+    <option value="">-- Select Coupon --</option>
+    <option value="HEALTH10">HEALTH10 — 10% off</option>
+    <option value="FIRST50">FIRST50 — ₹50 off</option>
+    <option value="FREESHIP">FREESHIP — Free Shipping</option>
+  </select>
+  <button id="applyCouponBtn" type="button" class="btn secondary">Apply</button>
+</label>
+<!-- ----------------------------------------------- -->
+
+        <label class="full">
+          Payment method
+          <select id="payMethod" required>
+            <option value="">-- Select --</option>
+            <option value="qr">UPI / QR</option>
+            <option value="card">Card </option>
+            <option value="cod">Cash on Delivery</option>
+          </select>
+        </label>
+
+        <div id="qrBlock" class="qr-block" style="display:none;">
+          <p>Scan the QR to pay exact amount:</p>
+          <img id="qrImage" alt="QR code" />
+          <p>Amount: ₹<span id="payAmount">0</span></p>
+          <button id="paidBtn" type="button" class="btn primary">I Have Paid</button>
+        </div>
+
+        <div id="cardBlock" style="display:none;">
+          <p style="font-size:0.95rem;margin:6px 0">Enter  card details </p>
+          <input name="card" placeholder="Card number" />
+          <div class="row">
+            <input name="expiry" placeholder="MM/YY" />
+            <input name="cvv" placeholder="CVV" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Place Order</button>
+          <button type="button" id="cancelCheckout" class="btn secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-panel">
+      <h2>✅ Payment Successful</h2>
+      <p>Your order has been placed. Thank you!</p>
+      <button id="closeSuccess" class="btn primary">Close</button>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- Toast Notification -->
+<div id="toast" class="toast"></div>
+
+
+
+<!-- Floating Cart Button (for mobile) -->
+<button id="floatingCart" class="floating-cart">🛒</button>
+
+
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
